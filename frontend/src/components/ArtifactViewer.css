@@ -1,0 +1,168 @@
+.artifact-viewer {
+  border: 2px solid #3b82f6;
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+}
+
+.artifact-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: linear-gradient(to right, #eff6ff, #dbeafe);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.artifact-header:hover {
+  background: linear-gradient(to right, #dbeafe, #bfdbfe);
+}
+
+.artifact-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.artifact-icon {
+  font-size: 1.5rem;
+}
+
+.artifact-name {
+  font-weight: 600;
+  color: #1e40af;
+  font-size: 1rem;
+}
+
+.artifact-meta {
+  font-size: 0.75rem;
+  color: #6b7280;
+  padding: 0.25rem 0.5rem;
+  background: white;
+  border-radius: 4px;
+}
+
+.expand-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.expand-icon {
+  color: #3b82f6;
+  transition: transform 0.2s;
+  font-size: 0.875rem;
+}
+
+.expand-icon.expanded {
+  transform: rotate(180deg);
+}
+
+.artifact-body {
+  border-top: 1px solid #e5e7eb;
+}
+
+.artifact-content {
+  padding: 1.5rem;
+  max-height: 500px;
+  overflow-y: auto;
+  line-height: 1.8;
+}
+
+.artifact-h1 {
+  font-size: 1.5rem;
+  margin: 0.5rem 0 1rem;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.artifact-h2 {
+  font-size: 1.25rem;
+  margin: 1rem 0 0.75rem;
+  color: #374151;
+  font-weight: 600;
+}
+
+.artifact-h3 {
+  font-size: 1.1rem;
+  margin: 0.75rem 0 0.5rem;
+  color: #4b5563;
+  font-weight: 600;
+}
+
+.artifact-p {
+  margin: 0.75rem 0;
+  color: #1f2937;
+}
+
+.artifact-li {
+  margin: 0.5rem 0 0.5rem 2rem;
+  color: #1f2937;
+}
+
+.artifact-actions {
+  padding: 1rem;
+  background: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.action-button {
+  padding: 0.5rem 1rem;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.action-button:hover {
+  background: #f3f4f6;
+  border-color: #3b82f6;
+}
+
+.artifact-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.topic-tag {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  background: #eff6ff;
+  color: #3b82f6;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* Scrollbar styling for artifact content */
+.artifact-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.artifact-content::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+.artifact-content::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
+}
+
+.artifact-content::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}

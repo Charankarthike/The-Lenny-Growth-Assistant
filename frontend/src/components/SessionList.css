@@ -1,0 +1,78 @@
+.session-list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.session-list-header {
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.session-list-header h2 {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin: 0;
+}
+
+.new-session-btn {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.new-session-btn:hover {
+  background: var(--color-primary-hover);
+}
+
+.session-items {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-sm);
+}
+
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--color-text-secondary);
+}
+
+.empty-state .hint {
+  font-size: var(--font-size-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.session-item {
+  padding: var(--spacing-md);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-bottom: var(--spacing-xs);
+}
+
+.session-item:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.session-item.active {
+  background: var(--color-primary);
+  color: white;
+}
+
+.session-title {
+  font-weight: 500;
+  margin-bottom: var(--spacing-xs);
+}
+
+.session-meta {
+  font-size: var(--font-size-sm);
+  opacity: 0.8;
+}

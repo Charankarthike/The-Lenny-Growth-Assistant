@@ -1,0 +1,120 @@
+.message-input-container {
+  border-top: 1px solid #e5e7eb;
+  background: white;
+  padding: 1rem 2rem 1.5rem;
+}
+
+.message-input-form {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-end;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.message-textarea {
+  flex: 1;
+  padding: 0.875rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  resize: none;
+  transition: all 0.2s;
+  min-height: 48px;
+  max-height: 144px;
+}
+
+.message-textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.message-textarea:disabled {
+  background: #f9fafb;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.message-textarea::placeholder {
+  color: #9ca3af;
+}
+
+.send-button {
+  padding: 0.875rem 1.25rem;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 52px;
+  height: 48px;
+  align-self: flex-end;
+}
+
+.send-button:hover:not(:disabled) {
+  background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.send-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.send-button:disabled {
+  background: #e5e7eb;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.send-icon {
+  display: block;
+}
+
+.loading-spinner {
+  display: block;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.input-footer {
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+.input-hint {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .message-input-container {
+    padding: 1rem;
+  }
+
+  .message-textarea {
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+
+  .input-hint {
+    font-size: 0.75rem;
+  }
+}
