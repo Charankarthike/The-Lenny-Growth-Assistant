@@ -11,14 +11,41 @@ export interface Session {
 }
 
 export interface Message {
+  id: string;
   message_id: string;
   role: 'user' | 'assistant' | 'system';
   content: string;
+  timestamp: string;
   created_at: string;
+  sources?: Source[];
+  artifact?: Artifact;
   metadata?: MessageMetadata;
 }
 
+export interface Source {
+  content: string;
+  similarity_score: number;
+  metadata?: {
+    episode_title?: string;
+    episode_number?: number;
+    guest_name?: string;
+    timestamp?: string;
+  };
+}
+
+export interface Artifact {
+  artifact_id: string;
+  artifact_type: string;
+  title?: string;
+  content: string;
+  metadata?: {
+    word_count?: number;
+    topics?: string[];
+  };
+}
+
 export interface MessageMetadata {
+  skill?: string;
   sources?: SourceReference[];
   artifacts?: ArtifactMetadata[];
   token_count?: number;

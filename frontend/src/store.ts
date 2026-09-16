@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { sendMessage as apiSendMessage } from './api';
 import type { Session, Message, Config } from './types';
 
 interface AppState {
@@ -18,6 +19,7 @@ interface AppState {
   messages: Message[];
   setMessages: (messages: Message[]) => void;
   addMessage: (message: Message) => void;
+  sendMessage: (content: string) => Promise<void>;
   
   // UI State
   isLoading: boolean;
@@ -32,9 +34,9 @@ interface AppState {
   setCurrentArtifact: (artifact: { content: string; type: 'markdown' | 'html' } | null) => void;
 }
 
-export const useStore = create<AppState>((set) => ({
+export const useChatStore = create<AppState>((set, get) => ({
   // Config
-  config: null,
+  config: null;
   setConfig: (config) => set({ config }),
   
   // Sessions
@@ -56,6 +58,48 @@ export const useStore = create<AppState>((set) => ({
   addMessage: (message) => set((state) => ({
     messages: [...state.messages, message],
   })),
+  sendMessage: async (content: string) => {
+    const { currentSession, addMessage, setLoading, setError } = get();
+    if (!currentSession) return;
+    
+    try {
+      setLoading(true);
+      setError(null);
+      
+      // Add user message
+      const userMessage: Message = {
+        id: Date.now().toString(),
+        message_id: Date.now().toString(),
+        role: 'user',
+        content,
+        timestamp: new Date().toISOString(),
+        created_at: new Date().toISOString(),
+      };
+      addMessage(userMessage);
+      
+      // Send to API
+      const response = await apiSendMessage(currentSession.session_id, content);
+      
+      // Add assistant message
+      const assistantMessage: Message = {
+        id: response.message_id || Date.now().toString(),
+        message_id: response.message_id,
+        role: 'assistant',
+        content: response.content,
+        timestamp: response.created_at,
+        created_at: response.created_at,
+        sources: response.metadata?.sources,
+        artifact: response.metadata?.artifacts?.[0],
+        metadata: response.metadata,
+      };
+      addMessage(assistantMessage);
+    } catch (error) {
+      console.error('Failed to send message:', error);
+      setError('Failed to send message');
+    } finally {
+      setLoading(false);
+    }
+  },
   
   // UI State
   isLoading: false,
@@ -69,3 +113,6 @@ export const useStore = create<AppState>((set) => ({
   setShowArtifactViewer: (show) => set({ showArtifactViewer: show }),
   setCurrentArtifact: (artifact) => set({ currentArtifact: artifact }),
 }));
+
+// Also export as useStore for backwards compatibility
+export const useStore = useChatStore;
