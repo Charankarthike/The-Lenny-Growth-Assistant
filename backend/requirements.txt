@@ -48,7 +48,7 @@ structlog==24.4.0
 python-json-logger==2.0.7
 
 # CORS and Middleware
-python-cors==1.0.0
+# python-cors==1.0.0  # Not needed - FastAPI has built-in CORS
 
 # Testing
 pytest==8.3.3
