@@ -36,7 +36,7 @@ interface AppState {
 
 export const useChatStore = create<AppState>((set, get) => ({
   // Config
-  config: null;
+  config: null,
   setConfig: (config) => set({ config }),
   
   // Sessions
