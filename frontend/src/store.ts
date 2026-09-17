@@ -88,8 +88,6 @@ export const useChatStore = create<AppState>((set, get) => ({
         content: response.content,
         timestamp: response.created_at,
         created_at: response.created_at,
-        sources: response.metadata?.sources,
-        artifact: response.metadata?.artifacts?.[0],
         metadata: response.metadata,
       };
       addMessage(assistantMessage);

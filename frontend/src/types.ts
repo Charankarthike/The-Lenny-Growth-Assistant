@@ -17,8 +17,8 @@ export interface Message {
   content: string;
   timestamp: string;
   created_at: string;
-  sources?: Source[];
-  artifact?: Artifact;
+  sources?: any[];
+  artifact?: any;
   metadata?: MessageMetadata;
 }
 
