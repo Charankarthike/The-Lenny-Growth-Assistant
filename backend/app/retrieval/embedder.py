@@ -78,6 +78,13 @@ class LocalEmbedder(Embedder):
             logger.info("embedding_model_loaded", 
                        model=self.model_name,
                        dimension=self.get_dimension())
+        except ImportError:
+            logger.warning("sentence_transformers_not_installed", 
+                          message="sentence-transformers not available, use OpenAI embeddings instead")
+            raise ImportError(
+                "sentence-transformers not installed. "
+                "Please set EMBEDDING_PROVIDER=openai in environment variables."
+            )
         except Exception as e:
             logger.error("failed_to_load_embedding_model", 
                         model=self.model_name,
