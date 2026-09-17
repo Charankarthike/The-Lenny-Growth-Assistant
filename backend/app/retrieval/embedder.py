@@ -3,7 +3,6 @@ Embedding generation for text using local or API-based models.
 """
 
 from typing import List, Optional
-import numpy as np
 
 from app.config import settings
 from app.logging_config import get_logger

@@ -1,33 +1,24 @@
 # Core - FastAPI and Server
 fastapi==0.109.0
-uvicorn[standard]==0.27.0
+uvicorn==0.27.0
 python-multipart==0.0.9
 
 # Database
 sqlalchemy==2.0.25
 psycopg2-binary==2.9.9
-alembic==1.13.1
 asyncpg==0.29.0
 pgvector==0.2.4
 
-# Pydantic (older stable version with pre-built wheels)
+# Pydantic (stable version with wheels)
 pydantic==2.5.3
 pydantic-settings==2.1.0
 
-# LLM Providers (essential only)
+# LLM Providers
 openai==1.10.0
 httpx==0.26.0
 
-# Embeddings - using OpenAI embeddings instead of local models
-# sentence-transformers and torch removed to avoid build issues
-numpy==1.26.3
-
-# Data Processing (minimal)
-tiktoken==0.5.2
-
-# Utilities
+# Required utilities
 python-dotenv==1.0.0
 tenacity==8.2.3
-
-# Logging
+tiktoken==0.5.2
 structlog==24.1.0
