@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type { Session, Message, Config } from './types';
 
-const API_BASE_URL = '/api/v1';
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -41,11 +41,17 @@ export const sendMessage = async (
   sessionId: string,
   content: string
 ): Promise<Message> => {
-  const { data } = await api.post(`/sessions/${sessionId}/messages`, {
-    content,
+  const { data } = await api.post(`/chat`, {
+    messages: [{ role: 'user', content }],
     stream: false,
   });
-  return data;
+  return {
+    id: Date.now().toString(),
+    role: 'assistant',
+    content: data.response,
+    timestamp: new Date().toISOString(),
+    sources: data.sources || [],
+  };
 };
 
 export const getMessages = async (sessionId: string): Promise<Message[]> => {
