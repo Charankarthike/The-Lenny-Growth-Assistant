@@ -1,5 +1,2 @@
-"""
-Lenny Growth Assistant Backend Application
-"""
-
-__version__ = "1.0.0"
+"""Lenny Growth Assistant Backend API"""
+__version__ = "2.0.0"

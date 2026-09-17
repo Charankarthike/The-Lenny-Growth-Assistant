@@ -4,73 +4,64 @@ __pycache__/
 *$py.class
 *.so
 .Python
-env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
 venv/
 ENV/
+env/
 .venv
-pip-log.txt
-pip-delete-this-directory.txt
 
-# Testing
-.pytest_cache/
-.coverage
-.coverage.*
-htmlcov/
-*.cover
-.hypothesis/
-.tox/
-
-# Environment
+# Environment variables
 .env
 .env.local
 .env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+logs/
 
 # Database
 *.db
 *.sqlite
 *.sqlite3
 
-# Logs
-*.log
-logs/
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
 
-# Distribution
-dist/
-build/
-*.egg-info/
-wheels/
-
-# IDEs
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-.project
-.pydevproject
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Alembic
-alembic/versions/*.pyc
-
-# Data files
-data/transcripts/*.json
-data/transcripts/*.md
-data/transcripts/*.html
+# Data
 data/transcripts/*.txt
-!data/transcripts/sample_*.json
-data/embeddings/
-data/vector_store/
-
-# Model cache
-models/
-.cache/
+data/transcripts/*.json
+!data/transcripts/.gitkeep
 
 # Jupyter
 .ipynb_checkpoints/
+*.ipynb
 
 # MyPy
 .mypy_cache/

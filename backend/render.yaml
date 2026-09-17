@@ -1,0 +1,41 @@
+services:
+  # PostgreSQL Database
+  - type: pserv
+    name: lenny-db
+    env: docker
+    plan: free
+    databaseName: lenny_assistant
+    databaseUser: lenny_user
+    region: oregon
+    ipAllowList: []
+
+  # Backend API
+  - type: web
+    name: lenny-api
+    env: python
+    region: oregon
+    plan: free
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: DATABASE_URL
+        fromDatabase:
+          name: lenny-db
+          property: connectionString
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ENVIRONMENT
+        value: production
+      - key: PORT
+        value: 10000
+      - key: CORS_ORIGINS
+        value: "*"
+      - key: EMBEDDING_MODEL
+        value: text-embedding-3-small
+      - key: LLM_MODEL
+        value: gpt-4o-mini
+      - key: TOP_K_RESULTS
+        value: 5
